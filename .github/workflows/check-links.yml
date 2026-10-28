@@ -1,38 +1,54 @@
 name: Check public links
 on:
   workflow_dispatch:
-  push:
-    branches: ["arena/e6321f12-trading"]
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   check:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
       - name: Probe candidate URLs
         run: |
-          SHA=$(echo "${{ github.sha }}")
-          echo "SHA=$SHA"
-          SHA_SHORT=$(echo "$SHA" | cut -c1-7)
-          echo "SHORT=$SHA_SHORT"
-          URLS="
-          https://cdn.jsdelivr.net/gh/muhamaddshokirov-source/Trading@${SHA}/index.html
-          https://cdn.jsdelivr.net/gh/muhamaddshokirov-source/Trading@main/index.html
-          https://raw.githack.com/muhamaddshokirov-source/Trading/${SHA}/index.html
-          https://cdn.statically.io/gh/muhamaddshokirov-source/Trading/${SHA}/index.html
-          https://raw.githubusercontent.com/muhamaddshokirov-source/Trading/${SHA}/index.html
-          "
-          for u in $URLS; do
-            echo "---- $u"
-            curl -sSL -m 25 -o /tmp/out.html -w 'HTTP=%{http_code} TYPE=%{content_type} SIZE=%{size_download}\n' "$u" || echo "curl failed"
-            head -c 120 /tmp/out.html 2>/dev/null | tr '\n' ' '; echo
+          set +e
+          SHA="${{ github.sha }}"
+          SHORT="${SHA:0:7}"
+          REPO="muhamaddshokirov-source/Trading"
+          OUT="link-report.txt"
+          : > $OUT
+          echo "sha=$SHA short=$SHORT" >> $OUT
+          probe () {
+            printf "%-105s " "$1" >> $OUT
+            curl -sSL -m 25 -o /tmp/body -w 'HTTP=%{http_code} TYPE=%{content_type} SIZE=%{size_download}' "$1" >> $OUT 2>&1
+            echo "" >> $OUT
+            head -c 80 /tmp/body 2>/dev/null | tr '\n' ' ' >> $OUT; echo "" >> $OUT
+          }
+          for u in \
+            "https://cdn.jsdelivr.net/gh/${REPO}@${SHA}/index.html" \
+            "https://cdn.jsdelivr.net/gh/${REPO}@main/index.html" \
+            "https://raw.githack.com/${REPO}/${SHA}/index.html" \
+            "https://raw.githack.com/${REPO}/arena/e6321f12-trading/index.html" \
+            "https://cdn.statically.io/gh/${REPO}/${SHA}/index.html" \
+            "https://raw.githubusercontent.com/${REPO}/${SHA}/index.html" ; do
+            probe "$u"
           done
-          echo "===== SUBRESOURCES (jsdelivr) ====="
-          for p in assets/css/styles.css assets/js/charts.js assets/favicon.svg; do
-            printf "%-32s " "$p"
-            curl -sSL -m 20 -o /dev/null -w 'HTTP=%{http_code} TYPE=%{content_type}\n' "https://cdn.jsdelivr.net/gh/muhamaddshokirov-source/Trading@${SHA}/${p}"
+          echo "--- subresources on jsdelivr ---" >> $OUT
+          for p in assets/css/styles.css assets/js/charts.js assets/js/i18n.js assets/favicon.svg; do
+            printf "%-40s " "$p" >> $OUT
+            curl -sSL -m 20 -o /dev/null -w 'HTTP=%{http_code} TYPE=%{content_type} SIZE=%{size_download}\n' "https://cdn.jsdelivr.net/gh/${REPO}@${SHA}/${p}" >> $OUT
           done
-          echo "===== RESOLVE BRANCH WITH SLASH ====="
-          curl -sS -m 20 -o /dev/null -w 'githack-branch HTTP=%{http_code}\n' "https://raw.githack.com/muhamaddshokirov-source/Trading/arena/e6321f12-trading/index.html" || true
+          echo "--- subresources on githack ---" >> $OUT
+          for p in assets/css/styles.css assets/js/charts.js; do
+            printf "%-40s " "$p" >> $OUT
+            curl -sSL -m 20 -o /dev/null -w 'HTTP=%{http_code} TYPE=%{content_type} SIZE=%{size_download}\n' "https://raw.githack.com/${REPO}/${SHA}/${p}" >> $OUT
+          done
+          cat $OUT
+      - name: Commit report
+        run: |
+          git config user.name "link-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add link-report.txt
+          git commit -m "chore: link probe report [skip ci]" || echo "no changes"
+          git push || echo "push failed"
