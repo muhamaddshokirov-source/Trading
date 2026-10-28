@@ -1,21 +1,23 @@
-sha=bc4bae7562ec9ab93b1c8e9cd09fb38c3718320c short=bc4bae7
-https://cdn.jsdelivr.net/gh/muhamaddshokirov-source/Trading@bc4bae7562ec9ab93b1c8e9cd09fb38c3718320c/index.html HTTP=200 TYPE=text/plain; charset=utf-8 SIZE=6107
-<!DOCTYPE html> <html lang="uz"> <head>   <meta charset="UTF-8">   <meta name="v
-https://cdn.jsdelivr.net/gh/muhamaddshokirov-source/Trading@main/index.html                               HTTP=404 TYPE=text/plain; charset=utf-8 SIZE=80
-Couldn't find the requested file /index.html in muhamaddshokirov-source/Trading.
-https://raw.githack.com/muhamaddshokirov-source/Trading/bc4bae7562ec9ab93b1c8e9cd09fb38c3718320c/index.html HTTP=200 TYPE=text/html; charset=utf-8 SIZE=6107
-<!DOCTYPE html> <html lang="uz"> <head>   <meta charset="UTF-8">   <meta name="v
-https://raw.githack.com/muhamaddshokirov-source/Trading/arena/e6321f12-trading/index.html                 HTTP=200 TYPE=text/html; charset=utf-8 SIZE=6107
-<!DOCTYPE html> <html lang="uz"> <head>   <meta charset="UTF-8">   <meta name="v
-https://cdn.statically.io/gh/muhamaddshokirov-source/Trading/bc4bae7562ec9ab93b1c8e9cd09fb38c3718320c/index.html HTTP=200 TYPE=text/plain; charset=utf-8 SIZE=6107
-<!DOCTYPE html> <html lang="uz"> <head>   <meta charset="UTF-8">   <meta name="v
-https://raw.githubusercontent.com/muhamaddshokirov-source/Trading/bc4bae7562ec9ab93b1c8e9cd09fb38c3718320c/index.html HTTP=200 TYPE=text/plain; charset=utf-8 SIZE=6107
-<!DOCTYPE html> <html lang="uz"> <head>   <meta charset="UTF-8">   <meta name="v
---- subresources on jsdelivr ---
-assets/css/styles.css                    HTTP=200 TYPE=text/css; charset=utf-8 SIZE=27512
-assets/js/charts.js                      HTTP=200 TYPE=application/javascript; charset=utf-8 SIZE=14337
-assets/js/i18n.js                        HTTP=200 TYPE=application/javascript; charset=utf-8 SIZE=19734
-assets/favicon.svg                       HTTP=200 TYPE=image/svg+xml SIZE=530
---- subresources on githack ---
-assets/css/styles.css                    HTTP=200 TYPE=text/css; charset=utf-8 SIZE=27512
-assets/js/charts.js                      HTTP=200 TYPE=application/javascript; charset=utf-8 SIZE=14337
+sha=8c4bb6e6f551183ae36ccbd6929918497a088c14
+=== PAGES via branch ===
+index.html       HTTP=200 TYPE=text/html; charset=utf-8 SIZE=6107
+trades.html      HTTP=200 TYPE=text/html; charset=utf-8 SIZE=3923
+analytics.html   HTTP=200 TYPE=text/html; charset=utf-8 SIZE=4956
+journal.html     HTTP=200 TYPE=text/html; charset=utf-8 SIZE=3384
+pricing.html     HTTP=200 TYPE=text/html; charset=utf-8 SIZE=7292
+=== ASSETS via branch ===
+assets/css/styles.css          HTTP=200 TYPE=text/css; charset=utf-8 SIZE=27512
+assets/js/i18n.js              HTTP=200 TYPE=application/javascript; charset=utf-8 SIZE=19734
+assets/js/data.js              HTTP=200 TYPE=application/javascript; charset=utf-8 SIZE=12778
+assets/js/charts.js            HTTP=200 TYPE=application/javascript; charset=utf-8 SIZE=14337
+assets/js/shell.js             HTTP=200 TYPE=application/javascript; charset=utf-8 SIZE=13613
+assets/js/dashboard.js         HTTP=200 TYPE=application/javascript; charset=utf-8 SIZE=13100
+assets/js/trades.js            HTTP=200 TYPE=application/javascript; charset=utf-8 SIZE=7722
+assets/js/analytics.js         HTTP=200 TYPE=application/javascript; charset=utf-8 SIZE=8092
+assets/js/journal.js           HTTP=200 TYPE=application/javascript; charset=utf-8 SIZE=9624
+assets/js/pricing.js           HTTP=200 TYPE=application/javascript; charset=utf-8 SIZE=2603
+assets/favicon.svg             HTTP=200 TYPE=image/svg+xml SIZE=530
+=== SECOND PASS (cache / stability) ===
+attempt 1: HTTP=200 TYPE=text/html; charset=utf-8 TIME=0.219645s
+attempt 2: HTTP=200 TYPE=text/html; charset=utf-8 TIME=0.201402s
+attempt 3: HTTP=200 TYPE=text/html; charset=utf-8 TIME=0.218481s
