@@ -12,39 +12,28 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Probe candidate URLs
+      - name: Probe githack
         run: |
           set +e
-          SHA="${{ github.sha }}"
-          SHORT="${SHA:0:7}"
           REPO="muhamaddshokirov-source/Trading"
           OUT="link-report.txt"
+          SHA="${{ github.sha }}"
           : > $OUT
-          echo "sha=$SHA short=$SHORT" >> $OUT
-          probe () {
-            printf "%-105s " "$1" >> $OUT
-            curl -sSL -m 25 -o /tmp/body -w 'HTTP=%{http_code} TYPE=%{content_type} SIZE=%{size_download}' "$1" >> $OUT 2>&1
-            echo "" >> $OUT
-            head -c 80 /tmp/body 2>/dev/null | tr '\n' ' ' >> $OUT; echo "" >> $OUT
-          }
-          for u in \
-            "https://cdn.jsdelivr.net/gh/${REPO}@${SHA}/index.html" \
-            "https://cdn.jsdelivr.net/gh/${REPO}@main/index.html" \
-            "https://raw.githack.com/${REPO}/${SHA}/index.html" \
-            "https://raw.githack.com/${REPO}/arena/e6321f12-trading/index.html" \
-            "https://cdn.statically.io/gh/${REPO}/${SHA}/index.html" \
-            "https://raw.githubusercontent.com/${REPO}/${SHA}/index.html" ; do
-            probe "$u"
+          echo "sha=$SHA" >> $OUT
+          echo "=== PAGES via branch ===" >> $OUT
+          for p in index.html trades.html analytics.html journal.html pricing.html; do
+            printf "%-16s " "$p" >> $OUT
+            curl -sSL -m 25 -o /dev/null -w 'HTTP=%{http_code} TYPE=%{content_type} SIZE=%{size_download}\n' "https://raw.githack.com/${REPO}/arena/e6321f12-trading/${p}" >> $OUT
           done
-          echo "--- subresources on jsdelivr ---" >> $OUT
-          for p in assets/css/styles.css assets/js/charts.js assets/js/i18n.js assets/favicon.svg; do
-            printf "%-40s " "$p" >> $OUT
-            curl -sSL -m 20 -o /dev/null -w 'HTTP=%{http_code} TYPE=%{content_type} SIZE=%{size_download}\n' "https://cdn.jsdelivr.net/gh/${REPO}@${SHA}/${p}" >> $OUT
+          echo "=== ASSETS via branch ===" >> $OUT
+          for p in assets/css/styles.css assets/js/i18n.js assets/js/data.js assets/js/charts.js assets/js/shell.js assets/js/dashboard.js assets/js/trades.js assets/js/analytics.js assets/js/journal.js assets/js/pricing.js assets/favicon.svg; do
+            printf "%-30s " "$p" >> $OUT
+            curl -sSL -m 25 -o /dev/null -w 'HTTP=%{http_code} TYPE=%{content_type} SIZE=%{size_download}\n' "https://raw.githack.com/${REPO}/arena/e6321f12-trading/${p}" >> $OUT
           done
-          echo "--- subresources on githack ---" >> $OUT
-          for p in assets/css/styles.css assets/js/charts.js; do
-            printf "%-40s " "$p" >> $OUT
-            curl -sSL -m 20 -o /dev/null -w 'HTTP=%{http_code} TYPE=%{content_type} SIZE=%{size_download}\n' "https://raw.githack.com/${REPO}/${SHA}/${p}" >> $OUT
+          echo "=== SECOND PASS (cache / stability) ===" >> $OUT
+          for i in 1 2 3; do
+            printf "attempt %s: " "$i" >> $OUT
+            curl -sSL -m 25 -o /dev/null -w 'HTTP=%{http_code} TYPE=%{content_type} TIME=%{time_total}s\n' "https://raw.githack.com/${REPO}/arena/e6321f12-trading/index.html" >> $OUT
           done
           cat $OUT
       - name: Commit report
