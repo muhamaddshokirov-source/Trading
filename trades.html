@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nexora — Trades</title>
+  <meta name="description" content="Savdolar tarixi: filtr, saralash va eksport.">
+  <meta name="theme-color" content="#07080c">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+  <div class="app" data-page="trades">
+    <aside class="sidebar" id="sidebar"></aside>
+
+    <div class="main">
+      <header class="topbar" id="topbar"></header>
+
+      <div class="content">
+        <div class="page-hero">
+          <div>
+            <h2 data-i18n="trades.title"></h2>
+            <p data-i18n="trades.sub"></p>
+          </div>
+          <div class="legend" id="heroMeta"></div>
+        </div>
+
+        <section class="grid kpis" id="tradeKpis"></section>
+
+        <section class="card mt16 reveal">
+          <div class="toolbar">
+            <div class="search">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+              <input id="q" data-i18n-ph="common.search" autocomplete="off">
+            </div>
+            <div class="seg" id="sideSeg">
+              <button class="on" data-side="all" data-i18n="common.all"></button>
+              <button data-side="long" data-i18n="common.long"></button>
+              <button data-side="short" data-i18n="common.short"></button>
+            </div>
+            <select id="setupSel" style="max-width:190px"></select>
+            <div class="topbar-spacer"></div>
+            <button class="btn btn-sm" id="resetBtn" data-i18n="common.reset"></button>
+            <button class="btn btn-sm" id="csvBtn"></button>
+          </div>
+
+          <div class="table-wrap">
+            <table class="dt" id="tradeTable">
+              <thead>
+                <tr>
+                  <th class="sortable" data-key="date" data-i18n="common.date"></th>
+                  <th class="sortable" data-key="symbol" data-i18n="common.symbol"></th>
+                  <th class="sortable" data-key="side" data-i18n="common.side"></th>
+                  <th class="sortable" data-key="setup" data-i18n="common.setup"></th>
+                  <th class="right sortable" data-key="entry" data-i18n="common.entry"></th>
+                  <th class="right sortable" data-key="exit" data-i18n="common.exit"></th>
+                  <th class="right sortable" data-key="r" data-i18n="common.r"></th>
+                  <th class="right sortable" data-key="pnl" data-i18n="common.pnl"></th>
+                </tr>
+              </thead>
+              <tbody id="tradeRows"></tbody>
+            </table>
+          </div>
+
+          <div class="toolbar" style="margin:14px 0 0">
+            <span class="dim" id="countLbl" style="font-size:11.5px"></span>
+            <div class="topbar-spacer"></div>
+            <button class="btn btn-sm" id="prevBtn" data-i18n="trades.prev"></button>
+            <span class="pill" id="pageLbl"></span>
+            <button class="btn btn-sm" id="nextBtn" data-i18n="trades.next"></button>
+          </div>
+        </section>
+      </div>
+
+      <footer class="footer">
+        <span>© <span class="year"></span> Nexora · <span data-i18n="footer.rights"></span></span>
+        <span class="links">
+          <a href="index.html" data-i18n="nav.dashboard"></a>
+          <a href="analytics.html" data-i18n="nav.analytics"></a>
+          <a href="pricing.html" data-i18n="nav.pricing"></a>
+        </span>
+      </footer>
+    </div>
+  </div>
+
+  <script src="assets/js/i18n.js"></script>
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/charts.js"></script>
+  <script src="assets/js/shell.js"></script>
+  <script src="assets/js/trades.js"></script>
+</body>
+</html>

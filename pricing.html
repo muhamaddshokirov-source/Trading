@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nexora — Pricing</title>
+  <meta name="description" content="Nexora tariflari: Start, Pro va Elite.">
+  <meta name="theme-color" content="#07080c">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+  <div class="app" data-page="pricing">
+    <aside class="sidebar" id="sidebar"></aside>
+
+    <div class="main">
+      <header class="topbar" id="topbar"></header>
+
+      <div class="content">
+        <div style="text-align:center;max-width:640px;margin:18px auto 30px">
+          <span class="badge green" style="margin-bottom:14px"><i class="dot"></i><span data-i18n="pricing.trial"></span></span>
+          <h2 style="margin:0 0 10px;font-size:32px;letter-spacing:-0.035em" data-i18n="pricing.title"></h2>
+          <p style="margin:0 0 22px;font-size:13.5px;color:var(--muted)" data-i18n="pricing.sub"></p>
+          <div class="seg" id="billingSeg" style="padding:4px">
+            <button class="on" data-billing="monthly" data-i18n="pricing.monthly" style="padding:8px 18px"></button>
+            <button data-billing="yearly" data-i18n="pricing.yearly" style="padding:8px 18px"></button>
+          </div>
+        </div>
+
+        <section class="pricing-grid">
+          <div class="card plan reveal">
+            <h3 data-i18n="pricing.free"></h3>
+            <p class="desc" data-i18n="pricing.freeDesc"></p>
+            <div class="price num" data-monthly="$0" data-yearly="$0">$0<small data-i18n="pricing.perMonth"></small></div>
+            <button class="btn btn-block" data-plan="start" data-i18n="pricing.start"></button>
+            <ul>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span data-i18n="pricing.f1"></span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span data-i18n="pricing.f2"></span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span data-i18n="pricing.f3"></span></li>
+            </ul>
+          </div>
+
+          <div class="card plan featured reveal">
+            <span class="badge green tag" data-i18n="pricing.popular"></span>
+            <h3 data-i18n="pricing.pro"></h3>
+            <p class="desc" data-i18n="pricing.proDesc"></p>
+            <div class="price num" data-monthly="$19" data-yearly="$15">$19<small data-i18n="pricing.perMonth"></small></div>
+            <button class="btn btn-primary btn-block" data-plan="pro" data-i18n="pricing.choose"></button>
+            <ul>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span data-i18n="pricing.f4"></span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span data-i18n="pricing.f5"></span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span data-i18n="pricing.f6"></span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span data-i18n="pricing.f7"></span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span data-i18n="pricing.f8"></span></li>
+            </ul>
+          </div>
+
+          <div class="card plan reveal">
+            <h3 data-i18n="pricing.elite"></h3>
+            <p class="desc" data-i18n="pricing.eliteDesc"></p>
+            <div class="price num" data-monthly="$49" data-yearly="$39">$49<small data-i18n="pricing.perMonth"></small></div>
+            <button class="btn btn-block" data-plan="elite" data-i18n="pricing.contact"></button>
+            <ul>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span data-i18n="pricing.f9"></span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span data-i18n="pricing.f10"></span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span data-i18n="pricing.f11"></span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span data-i18n="pricing.f12"></span></li>
+            </ul>
+          </div>
+        </section>
+
+        <p style="text-align:center;font-size:11.5px;color:var(--dim);margin:18px 0 0" data-i18n="pricing.note"></p>
+
+        <section class="card reveal mt24">
+          <div class="card-head"><div><h3 data-i18n="pricing.faq"></h3></div></div>
+          <div class="faq">
+            <details open><summary data-i18n="pricing.q1"></summary><p data-i18n="pricing.a1"></p></details>
+            <details><summary data-i18n="pricing.q2"></summary><p data-i18n="pricing.a2"></p></details>
+            <details><summary data-i18n="pricing.q3"></summary><p data-i18n="pricing.a3"></p></details>
+            <details><summary data-i18n="pricing.q4"></summary><p data-i18n="pricing.a4"></p></details>
+          </div>
+        </section>
+
+        <section class="card reveal mt16" style="display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;background:linear-gradient(120deg,rgba(20,240,164,.13),rgba(139,92,255,.13))">
+          <div>
+            <h3 style="margin:0 0 5px;font-size:17px" id="ctaTitle"></h3>
+            <p style="margin:0;font-size:12.5px;color:var(--muted)" id="ctaText"></p>
+          </div>
+          <a class="btn btn-primary" href="index.html" id="ctaBtn"></a>
+        </section>
+      </div>
+
+      <footer class="footer">
+        <span>© <span class="year"></span> Nexora · <span data-i18n="footer.rights"></span></span>
+        <span class="links">
+          <a href="index.html" data-i18n="nav.dashboard"></a>
+          <a href="trades.html" data-i18n="nav.trades"></a>
+          <a href="journal.html" data-i18n="nav.journal"></a>
+        </span>
+      </footer>
+    </div>
+  </div>
+
+  <script src="assets/js/i18n.js"></script>
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/charts.js"></script>
+  <script src="assets/js/shell.js"></script>
+  <script src="assets/js/pricing.js"></script>
+</body>
+</html>

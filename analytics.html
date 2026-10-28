@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nexora — Analytics</title>
+  <meta name="description" content="Chuqur savdo tahlili: R-taqsimot, drawdown, strategiyalar samarasi.">
+  <meta name="theme-color" content="#07080c">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+  <div class="app" data-page="analytics">
+    <aside class="sidebar" id="sidebar"></aside>
+
+    <div class="main">
+      <header class="topbar" id="topbar"></header>
+
+      <div class="content">
+        <div class="page-hero">
+          <div>
+            <h2 data-i18n="nav.analytics"></h2>
+            <p data-i18n="page.analytics.sub"></p>
+          </div>
+          <span class="badge green"><i class="dot"></i><span data-i18n="common.demo"></span></span>
+        </div>
+
+        <section class="card reveal" id="insightCard">
+          <div class="card-head" style="margin-bottom:8px">
+            <div class="card-title-row">
+              <span class="badge violet"><span data-i18n="analytics.insight"></span></span>
+            </div>
+          </div>
+          <p id="insightText" style="margin:0;font-size:13px;color:var(--muted);line-height:1.65"></p>
+        </section>
+
+        <section class="grid kpis mt16" id="anaKpis"></section>
+
+        <section class="two-col mt16">
+          <div class="card reveal">
+            <div class="card-head">
+              <div><h3 data-i18n="analytics.byMonth"></h3><p data-i18n="analytics.byMonthSub"></p></div>
+            </div>
+            <div class="chart-host" id="monthChart" style="height:250px"></div>
+          </div>
+          <div class="card reveal">
+            <div class="card-head">
+              <div><h3 data-i18n="analytics.byWeekday"></h3><p data-i18n="analytics.byWeekdaySub"></p></div>
+            </div>
+            <div class="chart-host" id="weekdayChart" style="height:250px"></div>
+          </div>
+        </section>
+
+        <section class="two-col mt16">
+          <div class="card reveal">
+            <div class="card-head">
+              <div><h3 data-i18n="analytics.rDist"></h3><p data-i18n="analytics.rDistSub"></p></div>
+            </div>
+            <div class="chart-host" id="rChart" style="height:230px"></div>
+          </div>
+          <div class="card reveal">
+            <div class="card-head">
+              <div><h3 data-i18n="analytics.bySide"></h3><p data-i18n="analytics.byMonthSub"></p></div>
+            </div>
+            <div class="chart-host" id="sideChart" style="height:180px"></div>
+            <div class="stat-rows" id="sideStats"></div>
+          </div>
+        </section>
+
+        <section class="two-col mt16">
+          <div class="card reveal">
+            <div class="card-head">
+              <div><h3 data-i18n="analytics.dd"></h3><p data-i18n="analytics.ddSub"></p></div>
+              <span class="badge red" id="ddBadge"></span>
+            </div>
+            <div class="chart-host" id="ddChart" style="height:230px"></div>
+          </div>
+          <div class="card reveal">
+            <div class="card-head">
+              <div><h3 data-i18n="analytics.bestWorst"></h3><p data-i18n="analytics.byMonthSub"></p></div>
+            </div>
+            <div class="stack" id="bestWorst" style="gap:10px"></div>
+          </div>
+        </section>
+
+        <section class="card mt16 reveal">
+          <div class="card-head">
+            <div><h3 data-i18n="analytics.bySetup"></h3><p data-i18n="analytics.byWeekdaySub"></p></div>
+          </div>
+          <div class="table-wrap">
+            <table class="dt">
+              <thead>
+                <tr>
+                  <th data-i18n="analytics.setupName"></th>
+                  <th class="right" data-i18n="analytics.trades"></th>
+                  <th class="right" data-i18n="analytics.wr"></th>
+                  <th class="right" data-i18n="analytics.avgR"></th>
+                  <th class="right" data-i18n="analytics.net"></th>
+                  <th style="width:180px" data-i18n="analytics.wr"></th>
+                </tr>
+              </thead>
+              <tbody id="setupRows"></tbody>
+            </table>
+          </div>
+        </section>
+      </div>
+
+      <footer class="footer">
+        <span>© <span class="year"></span> Nexora · <span data-i18n="footer.rights"></span></span>
+        <span class="links">
+          <a href="index.html" data-i18n="nav.dashboard"></a>
+          <a href="journal.html" data-i18n="nav.journal"></a>
+          <a href="pricing.html" data-i18n="nav.pricing"></a>
+        </span>
+      </footer>
+    </div>
+  </div>
+
+  <script src="assets/js/i18n.js"></script>
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/charts.js"></script>
+  <script src="assets/js/shell.js"></script>
+  <script src="assets/js/analytics.js"></script>
+</body>
+</html>

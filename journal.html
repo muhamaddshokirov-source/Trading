@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nexora — Journal</title>
+  <meta name="description" content="Savdo jurnali: qarorlar, psixologiya va intizom.">
+  <meta name="theme-color" content="#07080c">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+  <div class="app" data-page="journal">
+    <aside class="sidebar" id="sidebar"></aside>
+
+    <div class="main">
+      <header class="topbar" id="topbar"></header>
+
+      <div class="content">
+        <div class="page-hero">
+          <div>
+            <h2 data-i18n="journal.title"></h2>
+            <p data-i18n="journal.sub"></p>
+          </div>
+          <button class="btn btn-primary" id="newEntryBtn"></button>
+        </div>
+
+        <div class="two-col">
+          <div>
+            <div class="toolbar">
+              <div class="search">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+                <input id="jq" data-i18n-ph="common.search" autocomplete="off">
+              </div>
+              <div class="seg" id="tagSeg"></div>
+            </div>
+            <div class="journal-list" id="entries"></div>
+          </div>
+
+          <div class="stack">
+            <div class="card reveal">
+              <div class="card-head">
+                <div><h3 data-i18n="journal.stats"></h3><p id="statSub"></p></div>
+              </div>
+              <div class="stat-rows" id="jStats" style="margin-top:0"></div>
+            </div>
+
+            <div class="card reveal">
+              <div class="card-head">
+                <div><h3 data-i18n="journal.rules"></h3><p id="rulesSub"></p></div>
+                <span class="badge green" id="rulesBadge">0/4</span>
+              </div>
+              <div id="rules"></div>
+            </div>
+
+            <div class="card reveal">
+              <div class="card-head"><div><h3 data-i18n="journal.mood"></h3><p id="moodSub"></p></div></div>
+              <div class="seg" id="moodSeg" style="width:100%;justify-content:space-between">
+                <button data-mood="focused">🎯</button>
+                <button data-mood="calm">😌</button>
+                <button data-mood="confident">💪</button>
+                <button data-mood="tired">😴</button>
+                <button data-mood="tilted">😤</button>
+              </div>
+              <p class="dim mt16" style="font-size:11.5px;margin:14px 0 0" id="moodHint"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer class="footer">
+        <span>© <span class="year"></span> Nexora · <span data-i18n="footer.rights"></span></span>
+        <span class="links">
+          <a href="index.html" data-i18n="nav.dashboard"></a>
+          <a href="analytics.html" data-i18n="nav.analytics"></a>
+          <a href="pricing.html" data-i18n="nav.pricing"></a>
+        </span>
+      </footer>
+    </div>
+  </div>
+
+  <script src="assets/js/i18n.js"></script>
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/charts.js"></script>
+  <script src="assets/js/shell.js"></script>
+  <script src="assets/js/journal.js"></script>
+</body>
+</html>

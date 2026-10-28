@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nexora — Dashboard</title>
+  <meta name="description" content="Nexora — professional trading journal va statistika paneli.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <meta name="theme-color" content="#07080c">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+  <div class="app" data-page="dashboard">
+    <aside class="sidebar" id="sidebar"></aside>
+
+    <div class="main">
+      <header class="topbar" id="topbar"></header>
+
+      <div class="content">
+        <section class="grid kpis" id="kpis"></section>
+
+        <section class="two-col mt16">
+          <div class="card reveal">
+            <div class="card-head">
+              <div>
+                <div class="card-title-row">
+                  <h3 data-i18n="dash.equity"></h3>
+                  <span class="badge green"><i class="dot"></i>Live</span>
+                </div>
+                <p id="equitySub"></p>
+              </div>
+              <div class="seg" id="rangeSeg">
+                <button data-days="30" data-i18n="common.days30"></button>
+                <button data-days="90" data-i18n="common.days90"></button>
+                <button data-days="0" class="on" data-i18n="common.allTime"></button>
+              </div>
+            </div>
+            <div class="equity-head">
+              <div>
+                <div class="equity-balance num" id="balanceNow">$0</div>
+                <div class="equity-meta mt8" id="equityMeta"></div>
+              </div>
+            </div>
+            <div class="chart-host" id="equityChart" style="height:252px"></div>
+          </div>
+
+          <div class="card reveal">
+            <div class="card-head">
+              <div>
+                <h3 data-i18n="dash.winLoss"></h3>
+                <p data-i18n="dash.winLossSub"></p>
+              </div>
+            </div>
+            <div class="chart-host" id="winLossChart" style="height:190px"></div>
+            <div class="legend-grid" id="winLossLegend"></div>
+            <div class="stat-rows" id="winLossStats"></div>
+          </div>
+        </section>
+
+        <section class="two-col mt16">
+          <div class="card reveal">
+            <div class="card-head">
+              <div>
+                <h3 data-i18n="dash.recent"></h3>
+                <p data-i18n="page.trades.sub"></p>
+              </div>
+              <a class="btn btn-sm" href="trades.html" data-i18n="dash.viewAll"></a>
+            </div>
+            <div class="table-wrap">
+              <table class="dt compact">
+                <thead>
+                  <tr>
+                    <th data-i18n="common.symbol"></th>
+                    <th data-i18n="common.side"></th>
+                    <th data-i18n="common.setup"></th>
+                    <th data-i18n="common.date"></th>
+                    <th class="right" data-i18n="common.r"></th>
+                    <th class="right" data-i18n="common.pnl"></th>
+                  </tr>
+                </thead>
+                <tbody id="recentRows"></tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="card reveal">
+            <div class="card-head">
+              <div>
+                <h3 data-i18n="dash.calendar"></h3>
+                <p id="calSub"></p>
+              </div>
+              <span class="badge" id="calMonth"></span>
+            </div>
+            <div class="cal" id="calendar"></div>
+            <div class="legend-grid mt16" style="grid-template-columns:repeat(3,1fr)">
+              <span><i style="background:rgba(20,240,164,.55)"></i><span id="calPos">0</span></span>
+              <span><i style="background:rgba(255,84,112,.5)"></i><span id="calNeg">0</span></span>
+              <span><i style="background:rgba(255,255,255,.14)"></i><span id="calFlat">0</span></span>
+            </div>
+          </div>
+        </section>
+
+        <section class="three-col mt16">
+          <div class="card reveal">
+            <div class="card-head">
+              <div>
+                <h3 data-i18n="dash.symbols"></h3>
+                <p data-i18n="dash.symbolsSub"></p>
+              </div>
+            </div>
+            <div class="chart-host" id="symbolChart" style="height:236px"></div>
+          </div>
+
+          <div class="card reveal">
+            <div class="card-head">
+              <div>
+                <h3 data-i18n="dash.setups"></h3>
+                <p data-i18n="dash.setupsSub"></p>
+              </div>
+            </div>
+            <div class="breakdown" id="setupList"></div>
+          </div>
+
+          <div class="card reveal">
+            <div class="card-head">
+              <div>
+                <h3 data-i18n="dash.discipline"></h3>
+                <p data-i18n="dash.disciplineSub"></p>
+              </div>
+              <span class="badge green" id="discBadge">—</span>
+            </div>
+            <div class="gauge-wrap">
+              <div style="flex:1">
+                <div class="gauge-num num" id="discScore">0<small>/100</small></div>
+                <div class="gauge-track"><div class="gauge-fill" id="discFill" style="width:0%"></div></div>
+              </div>
+            </div>
+            <div class="stat-rows" id="discRows"></div>
+          </div>
+        </section>
+      </div>
+
+      <footer class="footer">
+        <span>© <span class="year"></span> Nexora · <span data-i18n="footer.rights"></span></span>
+        <span class="links">
+          <a href="pricing.html" data-i18n="nav.pricing"></a>
+          <a href="journal.html" data-i18n="nav.journal"></a>
+          <a href="analytics.html" data-i18n="nav.analytics"></a>
+        </span>
+      </footer>
+    </div>
+  </div>
+
+  <script src="assets/js/i18n.js"></script>
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/charts.js"></script>
+  <script src="assets/js/shell.js"></script>
+  <script src="assets/js/dashboard.js"></script>
+</body>
+</html>
