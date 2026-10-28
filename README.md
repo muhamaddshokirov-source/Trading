@@ -1,5 +1,25 @@
 # Nexora — Trading Journal
 
+## 🔗 Live demo (hech qanday login/parolsiz)
+
+**https://raw.githack.com/muhamaddshokirov-source/Trading/arena/e6321f12-trading/index.html**
+
+| Sahifa | Havola |
+|---|---|
+| Dashboard | [index.html](https://raw.githack.com/muhamaddshokirov-source/Trading/arena/e6321f12-trading/index.html) |
+| Savdolar | [trades.html](https://raw.githack.com/muhamaddshokirov-source/Trading/arena/e6321f12-trading/trades.html) |
+| Tahlil | [analytics.html](https://raw.githack.com/muhamaddshokirov-source/Trading/arena/e6321f12-trading/analytics.html) |
+| Jurnal | [journal.html](https://raw.githack.com/muhamaddshokirov-source/Trading/arena/e6321f12-trading/journal.html) |
+| Tariflar | [pricing.html](https://raw.githack.com/muhamaddshokirov-source/Trading/arena/e6321f12-trading/pricing.html) |
+
+> Bu GitHub'ning statik CDN'i (raw.githack) orqali ishlaydi — API kalit kerak emas.
+> Cache yangilanmasa, havola oxiriga `?v=2` qo'shib oching.
+
+### Doimiyroq domen kerakmi? (GitHub Pages — 1 daqiqa)
+1. Repo → **Settings → Pages → Build and deployment → Source: GitHub Actions**
+2. **Actions → Deploy to GitHub Pages → Run workflow** (branch: `arena/e6321f12-trading`)
+3. Manzil: `https://muhamaddshokirov-source.github.io/Trading/`
+
 Professional ko'rinishdagi **trading journal / analytics dashboard**. Sof HTML + CSS + JavaScript
 (hech qanday build, freymvork yoki CDN talab qilmaydi) — shuning uchun istalgan static hosting'ga
 bir zumda joylasa bo'ladi.
