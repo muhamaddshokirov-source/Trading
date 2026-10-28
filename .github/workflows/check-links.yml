@@ -1,6 +1,8 @@
 name: Check public links
 on:
   workflow_dispatch:
+  push:
+    branches: ["arena/e6321f12-trading"]
 
 permissions:
   contents: write
